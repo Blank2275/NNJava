@@ -5,7 +5,7 @@ public class Network {
         this.genNetwork();
     }
 
-    private void genNetwork(){
+    public void genNetwork(){
         for(int i = 1; i < layers.length; i++){
             layers[i].setRandomWeights(layers[i - 1].getN());
             layers[i].setRandomBiases();
@@ -21,5 +21,9 @@ public class Network {
 
     public Layer[] getLayers(){
         return layers;
+    }
+
+    public void setLayer(int index, Layer layer){
+        layers[index] = layer;
     }
 }

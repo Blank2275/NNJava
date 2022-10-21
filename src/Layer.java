@@ -48,7 +48,7 @@ public class Layer {
         this.biases = biases;
     }
 
-    private double genValue(double min, double max){
+    public static double genValue(double min, double max){
         return Math.random() * (max - min) + min;
     }
 
@@ -56,5 +56,15 @@ public class Layer {
         return n;
     }
 
+    public double[][] getWeights() {
+        return weights;
+    }
 
+    public double[] getBiases() {
+        return biases;
+    }
+
+    public ActivationType getActivation() {
+        return activation;
+    }
 }

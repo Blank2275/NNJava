@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="291e3094-ff33-4cec-be8c-80a67a4d1b89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NeuralNetwork.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ActivationRelu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ActivationType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Layer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Network.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Trainer.java" afterDir="false" />
+    <list default="true" id="291e3094-ff33-4cec-be8c-80a67a4d1b89" name="Changes" comment="Neural Network Working">
+      <change afterPath="$PROJECT_DIR$/src/DataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Layer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Network.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Trainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Trainer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +48,14 @@
       <option name="presentableId" value="Default" />
       <updated>1666223886258</updated>
     </task>
+    <task id="LOCAL-00001" summary="Neural Network Working">
+      <created>1666312748623</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666312748624</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -66,5 +68,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Neural Network Working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Neural Network Working" />
   </component>
 </project>

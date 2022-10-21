@@ -7,6 +7,22 @@ public class Main {
 
         Network network = new Network(layers);
 
+        int num_examples = 100;
+        double[][] inputData = new double[num_examples][2];
+        double[][] outputData = new double[num_examples][1];
+        for(int i = 0; i < num_examples; i++){
+            double n1 = Math.random() * 10;
+            double n2 = Math.random() * 10;
+            inputData[i] = new double[]{n1, n2};
+            outputData[i] = new double[]{n1 + n2};
+        }
+
+        DataSet data = new DataSet(inputData, outputData);
+
+        Trainer trainer = new Trainer(15, network);
+
+        Network bestNetwork = trainer.train(50, data);
+
         //for testing, tested with known parameters to make sure it evaluated correctly
 //        layers[0].setBiases(new double[]{1});
 //        layers[0].setWeights(new double[][]{{1, 1}});
@@ -15,6 +31,6 @@ public class Main {
 //        layers[2].setWeights(new double[][]{{1}});
 //        layers[2].setBiases(new double[]{0});
 
-        System.out.println(network.evaluateNetwork(new double[]{1, 2})[0]);
+        System.out.println(bestNetwork.evaluateNetwork(new double[]{1, 2})[0]);
     }
 }
