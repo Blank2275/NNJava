@@ -1,10 +1,10 @@
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException{
-        Layer[] layers = new Layer[3];
+        Layer[] layers = new Layer[4];
         layers[0] = new Layer(null, 2);
         layers[1] = new Layer(new ActivationRelu(), 5);
-        layers[1] = new Layer(new ActivationRelu(), 3);
-        layers[2] = new Layer(new ActivationRelu(), 1);
+        layers[2] = new Layer(new ActivationRelu(), 3);
+        layers[3] = new Layer(new ActivationRelu(), 1);
 
         Network network = new Network(layers);
 
@@ -22,7 +22,7 @@ public class Main {
 
         Trainer trainer = new Trainer(100, network);
 
-        Network bestNetwork = trainer.train(100, data);
+        Network bestNetwork = trainer.train(10, data);
 
         //for testing, tested with known parameters to make sure it evaluated correctly
 //        layers[0].setBiases(new double[]{1});
