@@ -20,9 +20,9 @@ public class Main {
 
         DataSet data = new DataSet(inputData, outputData);
 
-        Trainer trainer = new Trainer(100, network);
-
-        Network bestNetwork = trainer.train(10, data);
+//        Trainer trainer = new Trainer(100, network);
+//
+//        Network bestNetwork = trainer.train(10, data);
 
         //for testing, tested with known parameters to make sure it evaluated correctly
 //        layers[0].setBiases(new double[]{1});
@@ -32,9 +32,11 @@ public class Main {
 //        layers[2].setWeights(new double[][]{{1}});
 //        layers[2].setBiases(new double[]{0});
 
-        System.out.println(bestNetwork.evaluateNetwork(new double[]{0.5, 0.2})[0]);
+        Network loadedNetwork = Saver.load("./best.wb");
 
-        Saver saver = new Saver(bestNetwork);
-        saver.save("./best.wb");
+        System.out.println(loadedNetwork.evaluateNetwork(new double[]{0.5, 0.2})[0]);
+
+//        Saver saver = new Saver(bestNetwork);
+//        saver.save("./best.wb");
     }
 }
