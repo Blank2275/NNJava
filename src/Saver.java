@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Saver {
@@ -32,7 +33,7 @@ public class Saver {
 
             String data = "";
             while (reader.hasNextLine()) {
-                data += reader.nextLine();
+                data += reader.nextLine() + "\n";
             }
 
             n = decodeModel(data);
@@ -46,7 +47,7 @@ public class Saver {
     private static Network decodeModel(String data){
         //read header
         String[] dataArr = data.split("\n");
-        String currentLine = dataArr[0];
+        String currentLine = dataArr[1];
 
         int numLayers = Integer.parseInt(dataArr[0]);
 
@@ -60,43 +61,38 @@ public class Saver {
             if(parts[0].equals("relu")){
                 activation = new ActivationRelu();
             }
-
+            if(parts[0].equals("===")) break;
             int n = Integer.parseInt(parts[1]);
             layers[i - 1] = new Layer(activation, n);
-            currentLine = dataArr[i];
             i++;
+            currentLine = dataArr[i];
         }
 
-        int layer = 0;
-        double[] biases = null;
-        double[][] weights = null;
-        int currentNode = 0;
-        for(int j = 0; j < dataArr.length; j++){
-            if(biases != null && !dataArr[j].equals("===")){
-                //if not on first layer until next ===
-                weights[currentNode] = strArrToDbArr(dataArr[j].split(" "));
-                currentNode++;
-                
-            }
-            if(dataArr[j].equals("===")){
-                layer++;
-                j++;
-                int n = layers[layer].getN();
-                int pastN = layers[layer - 1].getN();
-
-                //actually set the layer's weights and biases
-                
-                
-                biases = strArrToDbArr(dataArr[j].split(" "));
-                j++;
-                weights = new double[n][pastN];
-                currentNode = 0;
-
-                
-            }
-        }
-        
         Network n = new Network(layers);
+
+        ArrayList<ArrayList<String>> chunks = new ArrayList<ArrayList<String>>();
+
+        int currentChunk = 0;
+        chunks.add(new ArrayList<String>());
+        for(String line: dataArr){
+            if(currentChunk != 0 && !line.equals("===")){
+                chunks.get(currentChunk - 1).add(line);
+            }
+            if(line.equals("===")){
+                currentChunk++;
+                if(currentChunk != 1) chunks.add(new ArrayList<String>());
+            }
+        }
+
+        for(int c = 0; c < chunks.size() - 1; c++){//chunks.size() - 1 because the last one is empty from the way they are split up
+            double[] biases = strArrToDbArr(chunks.get(c).get(0).split(" "));
+            double[][] weights = new double[layers[c+1].getN()][layers[c].getN()];
+            for(int l = 0; l < chunks.get(c).size() - 1; l++){//l for line
+                weights[l] = strArrToDbArr(chunks.get(c).get(l + 1).split(" "));;
+            }
+            layers[c + 1].setBiases(biases);
+            layers[c + 1].setWeights(weights);
+        }
         return n;
     }
 
