@@ -18,9 +18,11 @@ public class Layer {
                 res += past[p] * weights[c][p];// c for current, p for past
             }
             res += biases[c];
-            res = activation.activate(res);
+            // res = activation.activate(res);
             finalVals[c] = res;
         }
+
+        finalVals = activation.activate(finalVals);
 
         return finalVals;
     }
@@ -69,11 +71,13 @@ public class Layer {
         return activation;
     }
 
-    public String toEncoded(){
+    public String toEncoded() {
         ActivationType active = getActivation();
         String activationName = "";
-        if(active == null) activationName = "null";
-        else activationName = active.getEncodeName();
+        if (active == null)
+            activationName = "null";
+        else
+            activationName = active.getEncodeName();
         return String.format("%s %s", activationName, n);
     }
 }
