@@ -1,3 +1,5 @@
+package NN;
+
 public class Network implements Cloneable {
     private Layer[] layers;
 

@@ -1,3 +1,7 @@
+package NN;
+
+import NN.Activations.ActivationType;
+
 public class Layer {
     final protected ActivationType activation;
     private double[][] weights;

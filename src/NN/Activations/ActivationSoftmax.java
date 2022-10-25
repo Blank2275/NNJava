@@ -1,3 +1,5 @@
+package NN.Activations;
+
 public class ActivationSoftmax extends ActivationType {
     protected String encodeName = "softmax";
 

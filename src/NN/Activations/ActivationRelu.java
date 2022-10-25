@@ -1,4 +1,6 @@
-public class ActivationRelu extends  ActivationType{
+package NN.Activations;
+
+public class ActivationRelu extends ActivationType {
     public ActivationRelu(){
         encodeName = "relu";
     }

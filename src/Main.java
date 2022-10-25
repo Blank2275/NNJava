@@ -1,3 +1,7 @@
+import NN.*;
+import NN.Activations.ActivationRelu;
+import NN.Activations.ActivationSoftmax;
+
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException{
         Layer[] layers = new Layer[4];
@@ -26,7 +30,7 @@ public class Main {
 
        Trainer trainer = new Trainer(100, network);
 //
-       Network bestNetwork = trainer.train(3, data);
+       Network bestNetwork = trainer.train(300, data);
 
         //for testing, tested with known parameters to make sure it evaluated correctly
 //        layers[0].setBiases(new double[]{1});
@@ -36,7 +40,7 @@ public class Main {
 //        layers[2].setWeights(new double[][]{{1}});
 //        layers[2].setBiases(new double[]{0});
 
-        // Network loadedNetwork = Saver.load("./best.wb");
+        // NN.Network loadedNetwork = NN.Saver.load("./best.wb");
 
         double[] res = bestNetwork.evaluateNetwork(new double[]{0.5, 0.2});
         System.out.println(res[0] + " " + res[1]);

@@ -1,3 +1,9 @@
+package NN;
+
+import NN.DataSet;
+import NN.Layer;
+import NN.Network;
+
 public class Trainer {
     private int batchSize;
     private int topTenSize;

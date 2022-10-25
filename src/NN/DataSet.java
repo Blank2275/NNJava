@@ -1,3 +1,5 @@
+package NN;
+
 public class DataSet {
     private double[][] input;
     private double[][] output;

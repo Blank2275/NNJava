@@ -1,3 +1,8 @@
+package NN;
+
+import NN.Activations.ActivationRelu;
+import NN.Activations.ActivationType;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

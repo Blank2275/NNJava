@@ -1,3 +1,5 @@
+package NN.Activations;
+
 public abstract class ActivationType {
     protected String encodeName = "";
     public double[] activate(double[] in){
