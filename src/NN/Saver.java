@@ -1,6 +1,7 @@
 package NN;
 
 import NN.Activations.ActivationRelu;
+import NN.Activations.ActivationSoftmax;
 import NN.Activations.ActivationType;
 
 import java.io.File;
@@ -65,6 +66,8 @@ public class Saver {
 
             if(parts[0].equals("relu")){
                 activation = new ActivationRelu();
+            } else if(parts[0].equals("softmax")){
+                activation = new ActivationSoftmax();
             }
             if(parts[0].equals("===")) break;
             int n = Integer.parseInt(parts[1]);
