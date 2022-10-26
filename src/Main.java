@@ -1,6 +1,7 @@
 import NN.*;
 import NN.Activations.ActivationRelu;
 import NN.Activations.ActivationSoftmax;
+import NN.LossFunctions.CategoricalCrossentropy;
 
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException{
@@ -28,7 +29,7 @@ public class Main {
 
         DataSet data = new DataSet(inputData, outputData);
 
-       Trainer trainer = new Trainer(100, network);
+       Trainer trainer = new Trainer(100, network, new CategoricalCrossentropy());
 //
        Network bestNetwork = trainer.train(300, data);
 
@@ -42,7 +43,7 @@ public class Main {
 
         // NN.Network loadedNetwork = NN.Saver.load("./best.wb");
 
-        double[] res = bestNetwork.evaluateNetwork(new double[]{0.5, 0.2});
+        double[] res = bestNetwork.evaluate(new double[]{0.5, 0.2});
         System.out.println(res[0] + " " + res[1]);
 
        Saver saver = new Saver(bestNetwork);

@@ -15,7 +15,7 @@ public class Network implements Cloneable {
         }
     }
 
-    public double[] evaluateNetwork(double[] input) {
+    public double[] evaluate(double[] input) {
         for (int i = 1; i < layers.length; i++) {
             input = layers[i].evaluate(input);
         }

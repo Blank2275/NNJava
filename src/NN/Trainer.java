@@ -1,18 +1,18 @@
 package NN;
 
-import NN.DataSet;
-import NN.Layer;
-import NN.Network;
+import NN.LossFunctions.LossFunction;
 
 public class Trainer {
     private int batchSize;
     private int topTenSize;
     private Network base;
+    private LossFunction lossFunction;
 
-    public Trainer(int batchSize, Network base) {
+    public Trainer(int batchSize, Network base, LossFunction lossFunction) {
         this.batchSize = batchSize;
         this.topTenSize = batchSize / 10;
         this.base = base;
+        this.lossFunction = lossFunction;
     }
 
     public Network train(int generations, DataSet data) throws CloneNotSupportedException {
@@ -44,8 +44,6 @@ public class Trainer {
                 newBatch[i] = spawnChild(p1, p2);
             }
             System.out.println(scores[topIndices[0]]);
-            System.out.println(scores[6]);
-            System.out.println();
             //System.out.println(String.format("generation %s, loss:%s", g + 1,scores[topIndices[0]]));
             batch = newBatch;
 
@@ -94,23 +92,14 @@ public class Trainer {
         double[][] output = new double[expected.length][expected[0].length];
 
         for (int i = 0; i < output.length; i++) {
-            output[i] = network.evaluateNetwork(input[i]);
+            output[i] = network.evaluate(input[i]);
         }
 
         return calcError(expected, output);
     }
 
     private double calcError(double[][] expected, double[][] actual) {
-        double diff = 0;
-        int total = 0;
-        for (int i = 0; i < expected.length; i++) {
-            for (int j = 0; j < expected[0].length; j++) {
-                diff += Math.pow(expected[i][j] - actual[i][j], 2);
-                total++;
-            }
-        }
-        diff /= total;
-        return diff;
+        return lossFunction.evaluateLoss(expected, actual);
     }
 
     private Network spawnChild(Network p1, Network p2) throws CloneNotSupportedException {
